@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.DisplayMetrics;
 import android.util.SparseArray;
 import android.view.View;
 
@@ -60,5 +61,35 @@ public class Utils {
     public static int sp2px(Context context, float spValue) {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
+    }
+    public static int px2sp(Context context, float spValue) {
+        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (spValue / fontScale + 0.5f);
+    }
+
+    public static int dp2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
+    public static int px2dp(Context context, float pxValue) {
+
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
+    }
+
+    public static int SCREEN_WIDTH = 0;
+    public static int getScreenWidth(Activity activity){
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        SCREEN_WIDTH = displayMetrics.widthPixels;
+        return displayMetrics.widthPixels;
+    }
+    public static int SCREEN_HEIGHT = 0;
+    public static int getScreenHeight(Activity activity){
+        DisplayMetrics displayMetrics = activity.getResources().getDisplayMetrics();
+//        activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        SCREEN_HEIGHT = displayMetrics.heightPixels;
+        return displayMetrics.heightPixels;
     }
 }

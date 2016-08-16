@@ -41,6 +41,7 @@ public class LoginActivity extends BaseActivity<ILogin,LoginPresenter> implement
     private View mProgressView;
     private View mLoginFormView;
     private ImageView mImageView;
+    private TextView tvInfo;
     DrawableTypeRequest dtReq;
 
     @Override
@@ -51,6 +52,11 @@ public class LoginActivity extends BaseActivity<ILogin,LoginPresenter> implement
     @Override
     public void setCodeErrorText(String s) {
         mPasswordView.setError(s);
+    }
+
+    @Override
+    public void setTvInfo(String s) {
+        tvInfo.setText(s);
     }
 
     @Override
@@ -73,6 +79,9 @@ public class LoginActivity extends BaseActivity<ILogin,LoginPresenter> implement
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
+        Utils.getScreenWidth(this);
+        Utils.getScreenHeight(this);
+
         dtReq = Glide.with(LoginActivity.this)
                 .load("https://tse1-mm.cn.bing.net/th?id=OIP.Ma10427326d57a9635c749e2b2225187co0&w=231&h=143&c=7&rs=1&qlt=90&o=4&pid=1.1")
         ;
@@ -117,6 +126,8 @@ public class LoginActivity extends BaseActivity<ILogin,LoginPresenter> implement
                 EventBus.getDefault().post(new EventBusMsg.Login());
             }
         });
+        tvInfo  = Utils.$(this,R.id.tvInfo);
+        mPresenter.setScreenInfo();
     }
 
     @Override

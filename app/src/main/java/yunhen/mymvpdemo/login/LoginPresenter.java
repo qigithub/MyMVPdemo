@@ -1,5 +1,6 @@
 package yunhen.mymvpdemo.login;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,6 +14,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
+import yunhen.mymvpdemo.Utils;
 import yunhen.mymvpdemo.base.BasePresenter;
 import yunhen.mymvpdemo.http.ApiService;
 import yunhen.mymvpdemo.http.HttpClient;
@@ -85,6 +87,11 @@ public class LoginPresenter extends BasePresenter<ILogin> {
                 return Observable.just(loginReq.phone);
             }
         });
+    }
+
+    public void setScreenInfo(){
+        Activity activity = (Activity) iView.getContext();
+        iView.setTvInfo("width : "+Utils.SCREEN_WIDTH+ "\n" +"height : "+Utils.SCREEN_HEIGHT);
     }
 
 }

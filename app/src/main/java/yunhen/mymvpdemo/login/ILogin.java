@@ -19,4 +19,6 @@ public interface ILogin extends IBaseVIew {
 
     void setCodeErrorText(String s);
 
+    void setTvInfo(String s);
+
 }

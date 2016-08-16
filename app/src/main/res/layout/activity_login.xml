@@ -92,6 +92,12 @@
                 android:layout_width="160dp"
                 android:layout_height="160dp"
                 android:src="@mipmap/ic_launcher"/>
+
+            <TextView
+                android:id="@+id/tvInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="info"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
