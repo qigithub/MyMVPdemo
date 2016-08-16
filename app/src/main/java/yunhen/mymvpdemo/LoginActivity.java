@@ -167,6 +167,9 @@ public class LoginActivity extends BaseActivity<ILogin,LoginPresenter> implement
                     }
                 })
                 .into(mImageView);
+
+        mEmailView.append("");
+
     }
 
 
