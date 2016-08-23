@@ -36,6 +36,7 @@ public class RegisterActivity extends BaseActivity<IRegisterView,RegisterPresent
                 mPresenter.updateCodeText();
             }
         });
+        btnSub = Utils.$(this,R.id.btnSub);
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
