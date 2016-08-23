@@ -26,6 +26,10 @@ public abstract class BaseActivity<V,T extends BasePresenter<V>> extends AppComp
         return this;
     }
 
+    /**
+     * 设置setContentView
+     * @return layout.xml
+     */
     protected abstract int getLayoutId();
 
     ProgressDialog progressDialog;
