@@ -19,6 +19,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.orhanobut.logger.LogLevel;
+import com.orhanobut.logger.Logger;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -81,6 +83,14 @@ public class LoginActivity extends BaseActivity<ILogin,LoginPresenter> implement
         EventBus.getDefault().register(this);
         Utils.getScreenWidth(this);
         Utils.getScreenHeight(this);
+        Logger.init("PRETTYLOGGER")                 // default PRETTYLOGGER or use just init()
+                .methodCount(3)                 // default 2
+                .hideThreadInfo()               // default shown
+                .logLevel(LogLevel.FULL)        // default LogLevel.FULL// LogLevel.NONE(是否显示)
+                .methodOffset(2);                // default 0
+//                .logAdapter(new AndroidLogAdapter()); //default AndroidLogAdapter
+
+
 
         dtReq = Glide.with(LoginActivity.this)
                 .load("https://tse1-mm.cn.bing.net/th?id=OIP.Ma10427326d57a9635c749e2b2225187co0&w=231&h=143&c=7&rs=1&qlt=90&o=4&pid=1.1")
@@ -164,22 +174,10 @@ public class LoginActivity extends BaseActivity<ILogin,LoginPresenter> implement
                 .override(200,200)
                 .thumbnail(0.9f)
                 .error(R.mipmap.herahera)
-                .listener(new RequestListener() {
-                    @Override
-                    public boolean onException(Exception e, Object model, Target target,
-                                               boolean isFirstResource) {
-                        return false;
-                    }
-
-                    @Override
-                    public boolean onResourceReady(Object resource, Object model, Target target,
-                                                   boolean isFromMemoryCache, boolean isFirstResource) {
-                        return false;
-                    }
-                })
                 .into(mImageView);
 
         mEmailView.append("");
+        Logger.d("test log");
 
     }
 
